@@ -1,0 +1,35 @@
+# Datos personales: nunca deben publicarse.
+/backup/
+/backups/
+
+# Paquetes binarios de terceros. El README de paquetes conserva fuentes y hashes.
+/winterbreak2-pw3/paquetes/*
+!/winterbreak2-pw3/paquetes/README.md
+!/winterbreak2-pw3/paquetes/SHA256SUMS.txt
+
+# Archivos que un script puede rescatar desde el Kindle.
+/winterbreak2-pw3/archivos-update-rescatados/
+
+# Metadatos de macOS y archivos temporales.
+.DS_Store
+._*
+Thumbs.db
+*.tmp
+*.log
+
+# Credenciales, configuraciones locales y capturas privadas.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+credentials*
+secrets*
+/private/
+/screenshots-private/
+
+# Restos locales del método LanguageBreak descartado.
+/LanguageBreak-*.tar.gz
+/staging/
+/GUIA_LANGUAGEBREAK_PW3_MACOS.md
+/languagebreak-copy.sh
