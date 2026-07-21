@@ -21,11 +21,11 @@ Este archivo describe el Kindle concreto utilizado para validar la guía. No es 
 |---|---|---|
 | KUAL de NiLuJe | Instalado y probado | Abre correctamente desde Library |
 | Rename OTA Binaries | Ejecutado | Se eligió `Rename` y el Kindle reinició |
-| UpdateBlock Status | Instalado mediante KindleForge | Falta registrar el resultado textual mostrado por la aplicación |
+| UpdateBlock Status | Instalado mediante KindleForge | El archivo existe como `documents/updateblock.sh`; en Library aparece como **Check OTAs**. Falta registrar el resultado que muestre al abrirlo |
 | KOReader 2026.03 `kindlepw2` | Instalado y probado | Abre mediante `KUAL → KOReader → Start KOReader` |
 | KindleForge 4.1.0 | Instalado y probado | Catálogo gráfico operativo en este PW3 `sf` |
 
-`UpdateBlock Status` es un verificador; no sustituye a `Rename OTA Binaries`. Hasta registrar su resultado, la evidencia disponible de protección OTA es la ejecución confirmada de `Rename` y el reinicio posterior.
+`UpdateBlock Status` es el nombre del paquete en KindleForge, pero su lanzador declara `# Name: Check OTAs`. Por eso debe buscarse **Check OTAs** en Library. Es un verificador y no sustituye a `Rename OTA Binaries`. Hasta registrar su resultado, la evidencia disponible de protección OTA es la ejecución confirmada de `Rename` y el reinicio posterior.
 
 ## Aplicaciones instaladas desde KindleForge
 
@@ -37,6 +37,19 @@ Este archivo describe el Kindle concreto utilizado para validar la guía. No es 
 | KAnki | Instalada | Tarjetas de estudio | Compatible `hf`/`sf`; probar primero con un mazo pequeño |
 | kTerm | Instalada | Terminal local GTK+ | Compatible `hf`/`sf`; no es necesario para usar el SFTP integrado de KOReader |
 | KindleFetch | Instalada | Descarga de libros desde un catálogo externo | Depende de kTerm; ver advertencias abajo |
+
+## Dónde aparece cada aplicación
+
+La inspección USB del 21 de julio de 2026 confirmó dos superficies distintas:
+
+| Superficie | Entradas | Archivos de lanzamiento |
+|---|---|---|
+| Library | Check OTAs, KindleForge, KNotes, KPomo, KWordle y KAnki | `/mnt/us/documents/*.sh` |
+| KUAL | KOReader, kTerm y KindleFetch | `/mnt/us/extensions/*/menu.json` |
+
+No se deben mover las carpetas `KNotes`, `KPomo`, `KWordle` ni `KAnki`: sus lanzadores contienen rutas absolutas bajo `/mnt/us/documents/`. Una carpeta creada por USB tampoco se convierte automáticamente en una Collection de Library.
+
+Para evitar modificar esas rutas se añadió un submenú propio, **`KUAL → Installed Apps`**, que sólo enlaza los lanzadores existentes. Su fuente reproducible está en [`kindle-tools/installed-apps`](../kindle-tools/installed-apps/README.md). Esto agrupa los accesos en KUAL sin duplicar ni reubicar aplicaciones.
 
 KindleForge no expone en su registro una versión independiente para todas estas aplicaciones. Por eso el inventario conserva el nombre del catálogo y la fecha de instalación, sin inventar números de versión.
 

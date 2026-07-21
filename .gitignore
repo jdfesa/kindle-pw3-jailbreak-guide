@@ -28,6 +28,12 @@ secrets*
 /private/
 /screenshots-private/
 
+# Artefactos de compilación de prototipos propios.
+/experiments/**/target/
+/experiments/**/dist/
+/experiments/**/build/
+/experiments/**/*.map
+
 # Restos locales del método LanguageBreak descartado.
 /LanguageBreak-*.tar.gz
 /staging/

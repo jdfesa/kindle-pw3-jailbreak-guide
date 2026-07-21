@@ -81,3 +81,9 @@ El 21 de julio de 2026, el propietario confirmó la instalación de las siguient
 - `KindleFetch`, junto con su dependencia `kTerm`.
 
 La confirmación recibida acredita la instalación, no una prueba funcional completa de cada aplicación. El resultado textual de `UpdateBlock Status` todavía no fue registrado. El detalle actualizado se mantiene en [INVENTARIO_DEL_DISPOSITIVO.md](INVENTARIO_DEL_DISPOSITIVO.md).
+
+## Organización posterior de aplicaciones
+
+La inspección directa por USB confirmó que `UpdateBlock Status` se instala como `documents/updateblock.sh`, cuyo nombre visible es **Check OTAs**. También confirmó que las aplicaciones WAF instaladas usan rutas absolutas dentro de `documents`; moverlas para ordenarlas habría roto sus lanzadores.
+
+Se preparó entonces `KUAL → Installed Apps`: un menú de accesos que no mueve, duplica ni modifica las aplicaciones de terceros. La instalación USB y la prueba visual en el dispositivo se registran por separado en el inventario.

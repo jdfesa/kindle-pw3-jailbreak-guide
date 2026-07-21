@@ -20,6 +20,16 @@ El intento previo con LanguageBreak no funcionó de forma confiable en este disp
 
 Toda la documentación está indexada en [docs/README.md](docs/README.md). Las aplicaciones adicionales compatibles están explicadas en [docs/APLICACIONES_COMPATIBLES.md](docs/APLICACIONES_COMPATIBLES.md), y el estado concreto del equipo de prueba se conserva en el [inventario del dispositivo](docs/INVENTARIO_DEL_DISPOSITIVO.md).
 
+## Herramientas y experimentos propios
+
+La guía de liberación termina en `docs/` y no depende de ningún prototipo propio. El trabajo futuro de personalización vive, deliberadamente separado, en:
+
+- [kindle-tools/installed-apps](kindle-tools/installed-apps/README.md): submenú no destructivo de KUAL que agrupa accesos a las aplicaciones ya instaladas;
+- [experiments/README.md](experiments/README.md): índice de investigación para desarrollar una aplicación propia;
+- [viabilidad técnica](experiments/FEASIBILITY.md), [arquitectura propuesta](experiments/ARCHITECTURE.md) y [hoja de ruta](experiments/ROADMAP.md).
+
+Nada dentro de `experiments/` debe considerarse parte del jailbreak ni instalarse siguiendo la guía principal.
+
 ## Qué no contiene este repositorio
 
 - Los libros y documentos del usuario no se publican. En la ejecución documentada se restauraron al Kindle y luego se eliminó el backup local por decisión del propietario.

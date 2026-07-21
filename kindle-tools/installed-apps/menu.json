@@ -1,0 +1,65 @@
+{
+  "items": [
+    {
+      "name": "Installed Apps",
+      "priority": 5,
+      "items": [
+        {
+          "name": "KOReader",
+          "priority": 10,
+          "action": "/mnt/us/koreader/koreader.sh",
+          "params": "--kual",
+          "exitmenu": true
+        },
+        {
+          "name": "KindleForge",
+          "priority": 20,
+          "action": "/mnt/us/documents/KindleForge.sh",
+          "exitmenu": true
+        },
+        {
+          "name": "KNotes",
+          "priority": 30,
+          "action": "/mnt/us/documents/KNotes.sh",
+          "exitmenu": true
+        },
+        {
+          "name": "KPomo",
+          "priority": 40,
+          "action": "/mnt/us/documents/kpomo.sh",
+          "exitmenu": true
+        },
+        {
+          "name": "KAnki",
+          "priority": 50,
+          "action": "/mnt/us/documents/kanki.sh",
+          "exitmenu": true
+        },
+        {
+          "name": "KWordle",
+          "priority": 60,
+          "action": "/mnt/us/documents/kwordle.sh",
+          "exitmenu": true
+        },
+        {
+          "name": "Check OTA Protection",
+          "priority": 70,
+          "action": "/mnt/us/documents/updateblock.sh",
+          "exitmenu": true
+        },
+        {
+          "name": "kTerm",
+          "priority": 80,
+          "action": "/mnt/us/extensions/kterm/bin/kterm.sh",
+          "exitmenu": true
+        },
+        {
+          "name": "KindleFetch",
+          "priority": 90,
+          "action": "/mnt/us/extensions/kindlefetch/run.sh",
+          "exitmenu": true
+        }
+      ]
+    }
+  ]
+}
