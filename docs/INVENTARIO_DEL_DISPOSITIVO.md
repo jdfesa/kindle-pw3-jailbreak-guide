@@ -51,6 +51,14 @@ No se deben mover las carpetas `KNotes`, `KPomo`, `KWordle` ni `KAnki`: sus lanz
 
 Para evitar modificar esas rutas se añadió un submenú propio, **`KUAL → Installed Apps`**, que sólo enlaza los lanzadores existentes. Su fuente reproducible está en [`kindle-tools/installed-apps`](../kindle-tools/installed-apps/README.md). Esto agrupa los accesos en KUAL sin duplicar ni reubicar aplicaciones.
 
+El archivo quedó copiado en `/mnt/us/extensions/installed_apps/menu.json` y fue validado antes de expulsar el volumen. El SHA-256 de la fuente y de la copia fue:
+
+```text
+657617a5460b735dedeb602eccf4ec74275bef3a388f6eb6282d5851a6bbe111
+```
+
+El Kindle se expulsó correctamente desde macOS. Queda pendiente abrir KUAL sin USB y confirmar visualmente que `Installed Apps` aparece y que sus accesos funcionan. Esa prueba está descrita en el [backlog experimental](../experiments/BACKLOG.md).
+
 KindleForge no expone en su registro una versión independiente para todas estas aplicaciones. Por eso el inventario conserva el nombre del catálogo y la fecha de instalación, sin inventar números de versión.
 
 ## Estado de las pruebas

@@ -86,4 +86,6 @@ La confirmación recibida acredita la instalación, no una prueba funcional comp
 
 La inspección directa por USB confirmó que `UpdateBlock Status` se instala como `documents/updateblock.sh`, cuyo nombre visible es **Check OTAs**. También confirmó que las aplicaciones WAF instaladas usan rutas absolutas dentro de `documents`; moverlas para ordenarlas habría roto sus lanzadores.
 
-Se preparó entonces `KUAL → Installed Apps`: un menú de accesos que no mueve, duplica ni modifica las aplicaciones de terceros. La instalación USB y la prueba visual en el dispositivo se registran por separado en el inventario.
+Se preparó entonces `KUAL → Installed Apps`: un menú de accesos que no mueve, duplica ni modifica las aplicaciones de terceros. `menu.json` se copió a `/mnt/us/extensions/installed_apps/`; el JSON se validó, se comprobó que existieran sus nueve destinos y la copia produjo el mismo SHA-256 que la fuente. Después se ejecutó `sync` y macOS expulsó correctamente el volumen.
+
+La prueba visual sin USB se pospuso por decisión del propietario. No debe registrarse el menú como probado hasta confirmar que aparece en KUAL y abre los lanzadores esperados. Las tareas pendientes quedaron ordenadas en [`experiments/BACKLOG.md`](../experiments/BACKLOG.md).

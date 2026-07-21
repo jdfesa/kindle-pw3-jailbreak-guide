@@ -11,6 +11,7 @@ Investigar y, en una etapa posterior, construir una pequeña aplicación para el
 - [FEASIBILITY.md](FEASIBILITY.md): qué es viable, qué requiere pruebas y qué queda fuera de alcance.
 - [ARCHITECTURE.md](ARCHITECTURE.md): tecnologías comparadas y arquitectura inicial recomendada.
 - [ROADMAP.md](ROADMAP.md): fases, comprobaciones y criterios para no poner en riesgo el lector.
+- [BACKLOG.md](BACKLOG.md): tareas pendientes, prioridades, criterios de aceptación y orden de ejecución para la próxima sesión.
 
 ## Regla de separación
 
