@@ -68,3 +68,16 @@ Esa apertura fue la confirmación definitiva del jailbreak.
 - Se verificó `UtildSF`, requerido por este firmware soft-float.
 - Se copió a `documents` para su registro y prueba posterior.
 
+## Instalaciones posteriores mediante KindleForge
+
+El 21 de julio de 2026, el propietario confirmó la instalación de las siguientes entradas del catálogo:
+
+- `UpdateBlock Status`;
+- `KNotes`;
+- `KPomo`;
+- `KWordle`;
+- `KAnki`;
+- `kTerm`;
+- `KindleFetch`, junto con su dependencia `kTerm`.
+
+La confirmación recibida acredita la instalación, no una prueba funcional completa de cada aplicación. El resultado textual de `UpdateBlock Status` todavía no fue registrado. El detalle actualizado se mantiene en [INVENTARIO_DEL_DISPOSITIVO.md](INVENTARIO_DEL_DISPOSITIVO.md).

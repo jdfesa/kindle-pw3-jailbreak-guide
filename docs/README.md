@@ -11,6 +11,7 @@
 
 ## Después del jailbreak
 
+- [Inventario del dispositivo de prueba](INVENTARIO_DEL_DISPOSITIVO.md)
 - [Aplicaciones compatibles](APLICACIONES_COMPATIBLES.md)
 - [Bitácora de la ejecución real](HISTORIAL_DE_LA_PRUEBA.md)
 - [Paquetes, fuentes y hashes](../winterbreak2-pw3/paquetes/README.md)
@@ -33,4 +34,3 @@
 | `10-copiar-kindleforge.sh` | Instalar gestor opcional | Sí |
 
 Cuando un script imprime `EXPULSION_OK`, recién entonces se desconecta físicamente el cable.
-

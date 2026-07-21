@@ -18,11 +18,11 @@ El intento previo con LanguageBreak no funcionó de forma confiable en este disp
 3. Ejecutar `./winterbreak2-pw3/scripts/00-verificar-paquetes.sh`.
 4. Seguir la guía sin saltar comprobaciones ni cambiar el estado del cable.
 
-Toda la documentación está indexada en [docs/README.md](docs/README.md). Las aplicaciones adicionales compatibles están explicadas en [docs/APLICACIONES_COMPATIBLES.md](docs/APLICACIONES_COMPATIBLES.md).
+Toda la documentación está indexada en [docs/README.md](docs/README.md). Las aplicaciones adicionales compatibles están explicadas en [docs/APLICACIONES_COMPATIBLES.md](docs/APLICACIONES_COMPATIBLES.md), y el estado concreto del equipo de prueba se conserva en el [inventario del dispositivo](docs/INVENTARIO_DEL_DISPOSITIVO.md).
 
 ## Qué no contiene este repositorio
 
-- Los libros y documentos del usuario están en `backup/`, ignorados por Git.
+- Los libros y documentos del usuario no se publican. En la ejecución documentada se restauraron al Kindle y luego se eliminó el backup local por decisión del propietario.
 - Los paquetes de jailbreak y aplicaciones son propiedad de sus respectivos proyectos y están ignorados por Git.
 - No se incluyen números de serie completos, credenciales Wi‑Fi ni registros personales del dispositivo.
 

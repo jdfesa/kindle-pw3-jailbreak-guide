@@ -2,6 +2,8 @@
 
 Dispositivo de referencia: PW3, firmware 5.16.2.1.1, ABI `soft-float`, KUAL de NiLuJe y Hotfix 2.3.7.
 
+Esta página explica compatibilidad y recomendaciones generales. Para saber qué quedó instalado realmente en el equipo usado para la guía, consultar [INVENTARIO_DEL_DISPOSITIVO.md](INVENTARIO_DEL_DISPOSITIVO.md).
+
 ## Lo que ya está instalado
 
 ### KOReader 2026.03
@@ -69,6 +71,8 @@ Declara `sf`, pero es un entorno completo, pesado y con más posibilidades de de
 ### KindleFetch
 
 Depende de kTerm y descarga libros desde un catálogo externo con situación legal variable. No se recomienda como parte de una configuración reproducible; usar archivos propios, Calibre, OPDS o fuentes autorizadas.
+
+Aunque quedó instalado en el dispositivo de prueba por decisión del propietario, esa instalación no cambia la recomendación anterior. No se considera un componente del jailbreak ni un requisito de esta guía.
 
 ### KPM, JarLauncher, Textadept y Wordgrinder
 
