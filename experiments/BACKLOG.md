@@ -35,6 +35,20 @@ Al cerrar una tarea se debe anotar fecha, resultado, forma de prueba y cualquier
 
 ## P0 — Próxima sesión: validación sin USB
 
+### 0. Confirmar el autoinicio determinista de KOReader
+
+- [ ] Reiniciar con el cable físicamente desconectado y Airplane Mode activo.
+- [ ] Aceptar como normal el logo de Kindle y la barra del firmware.
+- [ ] Confirmar que luego aparece la ilustración local.
+- [ ] Confirmar que KOReader abre automáticamente en Night Mode dentro del
+  margen normal de uno a dos minutos.
+- [ ] Si queda en Home nativa, no encadenar reinicios: comprobar primero
+  `ENABLE_KOREADER_AUTOSTART`, el trabajo Upstart `koreader` y sus logs mediante
+  USBNetwork.
+
+**Criterio de aceptación:** la Home nativa puede verse brevemente, pero no queda
+como estado final; la secuencia termina siempre en KOReader sin intervención.
+
 ### 1. Comprobar el nuevo menú de KUAL
 
 - [ ] Desconectar físicamente el cable si todavía estuviera conectado.

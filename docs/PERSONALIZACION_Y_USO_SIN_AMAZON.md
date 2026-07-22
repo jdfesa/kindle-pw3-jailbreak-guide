@@ -59,6 +59,29 @@ ruta de biblioteca y el comportamiento de refresco deben probarse en su modelo.
 La inversión es de KOReader, no una modificación global del firmware de Amazon.
 Así queda contenida, reversible y no afecta KUAL ni las pantallas de recuperación.
 
+## Secuencia esperada después de reiniciar
+
+Un reinicio normal o forzado siempre comienza con el logo de Kindle y su barra
+de progreso. Esa pantalla pertenece al arranque temprano del firmware y no se
+reemplaza, porque hacerlo ampliaría innecesariamente el riesgo de recuperación.
+
+Cuando el framework y `/mnt/us` quedan disponibles, la secuencia buscada es:
+
+```text
+Logo de Kindle y barra → ilustración local → KOReader en Night Mode
+```
+
+La Home nativa puede aparecer brevemente mientras termina el framework, pero no
+debe ser el estado final. En este PW3 se admite un margen de uno a dos minutos
+antes de declarar que falló el autoinicio. La prueba se hace con el cable
+desconectado; si después de ese plazo sigue en Home nativa, se revisan el marcador
+`/mnt/us/ENABLE_KOREADER_AUTOSTART`, el estado Upstart de `koreader` y sus logs
+antes de forzar otro reinicio.
+
+Durante la instalación de USBNetwork el marcador se apartó deliberadamente para
+que MRPI pudiera trabajar sin competir con KOReader. Ya fue restaurado, pero el
+primer reinicio completo posterior queda como prueba pendiente.
+
 ## Por qué no se modificó KPP
 
 `KPP_Patch` puede ocultar el aviso de registro, los carruseles comerciales y el
