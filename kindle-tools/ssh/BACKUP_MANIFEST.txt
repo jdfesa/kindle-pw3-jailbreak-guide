@@ -1,0 +1,13 @@
+Repository: kindle-pw3-jailbreak-guide
+Purpose: SSH/SFTP key for the jailbroken Kindle Paperwhite 3
+Private key source: ~/.ssh/id_ecdsa_kindle_pw3
+Encrypted backup: id_ecdsa_kindle_pw3.enc
+Public key source: ~/.ssh/id_ecdsa_kindle_pw3.pub
+Public key fingerprint: SHA256:NkyP/krpXihdUjU30hQr0xUa8busmxcb/vT5AzwbkTA
+Key type: ECDSA P-256
+Encryption: AES-256-CBC with PBKDF2 and 600000 iterations
+Recovery password: stored outside the Hackintosh; never in macOS Keychain only
+
+The private key is confidential and is never copied here without encryption.
+Do not publish, commit, or share this folder.
+The public key is installed in KOReader settings/SSH/authorized_keys.
