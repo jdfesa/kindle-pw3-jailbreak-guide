@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/e8df19a6-e2ad-48f9-b62b-c21c69aceccb
+
 # Kindle Paperwhite 3: WinterBreak2 verificado en macOS
 
 Procedimiento reproducible para liberar un **Kindle Paperwhite 3 (7.ª generación, 2015)** con firmware **5.16.2.1.1** desde macOS, conservar los libros e instalar KUAL, bloqueo OTA, KOReader y KindleForge. Incluye además una configuración local-first comprobada, biblioteca ordenada y canales de recuperación por SSH.
