@@ -23,6 +23,8 @@ Thumbs.db
 *.pem
 *.key
 *.p12
+id_ecdsa_kindle_pw3
+id_ecdsa_kindle_pw3.pub
 credentials*
 secrets*
 /private/
