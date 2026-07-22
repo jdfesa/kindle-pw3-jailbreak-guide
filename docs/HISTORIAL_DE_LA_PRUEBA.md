@@ -115,7 +115,7 @@ Esta página distingue lo comprobado de lo inferido. Para ejecutar el procedimie
   SSH automático de USBNetwork continúan pendientes.
 - Se registró en video un reinicio normal completo: logo y barra de progreso,
   ilustración local y apertura automática de la Home de KOReader en Night Mode.
-  La [grabación pública de 45 segundos](../assets/videos/kindle-pw3-arranque-koreader.mp4)
+  La [grabación pública de 45 segundos](https://github.com/user-attachments/assets/e8df19a6-e2ad-48f9-b62b-c21c69aceccb)
   se normalizó a H.264 con píxeles cuadrados y se publicó sin audio ambiente.
 - Criterio operativo: usar `Restart` siempre que la interfaz responda y reservar
   el botón mantenido para un bloqueo real. No encadenar reinicios forzados para
