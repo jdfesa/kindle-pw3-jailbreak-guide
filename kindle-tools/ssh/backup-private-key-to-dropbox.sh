@@ -43,7 +43,7 @@ elif [ -t 0 ]; then
     unset passphrase confirmation
 else
     printf 'ERROR: ejecutá este script desde una terminal para ingresar la contraseña sin mostrarla.\n' >&2
-    printf 'Alternativa: define BACKUP_PASSPHRASE_FILE con un archivo guardado fuera de este Hackintosh.\n' >&2
+    printf 'Alternativa: define BACKUP_PASSPHRASE_FILE con un archivo guardado fuera del equipo de administración.\n' >&2
     exit 1
 fi
 chmod 600 "$pass_file"
@@ -77,5 +77,5 @@ cmp -s "$PUBLIC_KEY" "$BACKUP_DIR/id_ecdsa_kindle_pw3.pub" || {
 printf 'SSH_BACKUP_ENCRYPTED_OK\n'
 printf 'Destino: %s\n' "$BACKUP_DIR"
 printf 'Cifrado: AES-256-CBC, PBKDF2, 600000 iteraciones\n'
-printf 'Contraseña: no almacenada; debe conservarse fuera de este Hackintosh.\n'
+printf 'Contraseña: no almacenada; debe conservarse fuera del equipo de administración.\n'
 printf 'No se copió la clave privada sin cifrar.\n'

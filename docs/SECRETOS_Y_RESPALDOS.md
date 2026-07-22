@@ -20,33 +20,15 @@ por Git y GitHub.
 Dropbox/99_Archive/kindle-pw3-jailbreak-guide/
 └── ssh/
     ├── README.txt
-    ├── id_ecdsa_kindle_pw3.KEYCHAIN_DEPENDENT_PROVISIONAL.enc
     ├── id_ecdsa_kindle_pw3.enc
     └── id_ecdsa_kindle_pw3.pub
 ```
 
-`id_ecdsa_kindle_pw3.enc` es el respaldo definitivo actual. El provisional se
-conserva sólo como evidencia y no debe ser la fuente de recuperación porque su
-contraseña dependía inicialmente del Llavero de macOS.
-
 La clave privada debe conservar permisos `0600` en el equipo local. A Dropbox
 se copia cifrada con AES-256-CBC y PBKDF2. La contraseña de recuperación **no
-puede depender del Llavero de macOS**: esta máquina es un Hackintosh inestable y
-una falla podría volver inaccesibles tanto el equipo como el Llavero. La
-contraseña debe conservarse fuera de esta computadora, por ejemplo escrita en
-papel y guardada en un lugar seguro o en un gestor independiente.
-
-El primer respaldo del 21 de julio de 2026 terminó con
-`SSH_BACKUP_ENCRYPTED_OK`, pero su contraseña quedó inicialmente en el Llavero.
-Después de registrar que el Hackintosh no es una fuente de recuperación fiable,
-ese archivo pasó a considerarse **provisional**. Se generó luego el respaldo
-definitivo con una contraseña conservada en Bitwarden, fuera del Llavero. El
-script comprobó la copia cifrada descifrándola en un directorio temporal y
-comparándola con la clave activa.
-
-Como la contraseña definitiva también fue comunicada durante la sesión de
-configuración, conviene rotarla cuando resulte práctico. Esto no invalida la
-copia actual ni obliga a depender del Llavero.
+puede depender únicamente del Llavero de macOS** ni quedar almacenada junto al
+archivo cifrado. Debe conservarse en un medio independiente del equipo de
+administración, como un gestor de contraseñas o una copia física protegida.
 
 ```bash
 ./kindle-tools/ssh/backup-private-key-to-dropbox.sh

@@ -6,7 +6,7 @@ Public key source: ~/.ssh/id_ecdsa_kindle_pw3.pub
 Public key fingerprint: SHA256:NkyP/krpXihdUjU30hQr0xUa8busmxcb/vT5AzwbkTA
 Key type: ECDSA P-256
 Encryption: AES-256-CBC with PBKDF2 and 600000 iterations
-Recovery password: stored outside the Hackintosh; never in macOS Keychain only
+Recovery password: stored separately from the administration workstation; never in macOS Keychain only
 
 The private key is confidential and is never copied here without encryption.
 Do not publish, commit, or share this folder.

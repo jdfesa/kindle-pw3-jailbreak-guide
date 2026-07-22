@@ -140,13 +140,10 @@ Esta página distingue lo comprobado de lo inferido. Para ejecutar el procedimie
 - Se creó la clave ECDSA P-256 dedicada `id_ecdsa_kindle_pw3`, con huella
   `SHA256:NkyP/krpXihdUjU30hQr0xUa8busmxcb/vT5AzwbkTA`.
 - La privada se respaldó cifrada con AES-256-CBC/PBKDF2 bajo
-  `Dropbox/99_Archive/kindle-pw3-jailbreak-guide/ssh/`. La primera contraseña
-  quedó en el Llavero de macOS, pero luego se registró que el Hackintosh y su
-  Llavero no son una fuente de recuperación confiable. Ese respaldo quedó
-  marcado como provisional.
-- Se generó un segundo archivo cifrado cuya contraseña se conservó en un gestor
-  externo. Como esa contraseña se comunicó también por el chat, el archivo debe
-  regenerarse con una nueva que no se revele fuera del gestor.
+  `Dropbox/99_Archive/kindle-pw3-jailbreak-guide/ssh/`. La contraseña de
+  recuperación se conservó separada del archivo cifrado y del equipo de
+  administración; la copia se verificó mediante descifrado temporal y
+  comparación con la clave activa.
 - Se localizó el SSH de KOReader en la red local, se ingresó temporalmente como
   `root` y se instaló la clave pública en
   `/mnt/us/koreader/settings/SSH/authorized_keys`.
