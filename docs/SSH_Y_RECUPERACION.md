@@ -135,6 +135,12 @@ la Home nativa. macOS volvió a montar `/Volumes/Kindle` y la interfaz RNDIS dej
 de existir. Antes de declarar el canal apto para KPP sólo falta repetir la prueba
 con `usbnet/auto` durante un reinicio.
 
+El primer intento con `auto` siguió a un reinicio físico forzado. macOS detectó
+RNDIS, pero el puerto 22 estaba cerrado, de modo que no cuenta como acceso de
+recuperación aprobado. Un `Restart` posterior desde el menú sí recuperó el
+autoinicio de KOReader, pero USBNetwork deberá verificarse nuevamente conectando
+el cable después de otro arranque controlado.
+
 Fuentes:
 
 - [SSH de KOReader](https://github.com/koreader/koreader/wiki/SSH)

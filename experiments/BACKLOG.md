@@ -37,17 +37,20 @@ Al cerrar una tarea se debe anotar fecha, resultado, forma de prueba y cualquier
 
 ### 0. Confirmar el autoinicio determinista de KOReader
 
-- [ ] Reiniciar con el cable físicamente desconectado y Airplane Mode activo.
-- [ ] Aceptar como normal el logo de Kindle y la barra del firmware.
-- [ ] Confirmar que luego aparece la ilustración local.
-- [ ] Confirmar que KOReader abre automáticamente en Night Mode dentro del
+- [x] Reiniciar desde el menú con el cable físicamente desconectado.
+- [x] Aceptar como normal el logo de Kindle y la barra del firmware.
+- [x] Confirmar que luego aparece la ilustración local.
+- [x] Confirmar que KOReader abre automáticamente dentro del
   margen normal de uno a dos minutos.
+- [ ] Repetir en otra sesión la contingencia de reinicio físico forzado; no usarla
+  como método normal ni declararla aprobada con la prueba anterior.
 - [ ] Si queda en Home nativa, no encadenar reinicios: comprobar primero
   `ENABLE_KOREADER_AUTOSTART`, el trabajo Upstart `koreader` y sus logs mediante
   USBNetwork.
 
-**Criterio de aceptación:** la Home nativa puede verse brevemente, pero no queda
-como estado final; la secuencia termina siempre en KOReader sin intervención.
+**Resultado normal aprobado:** la Home nativa puede verse brevemente, pero no
+queda como estado final; la secuencia termina en KOReader sin intervención.
+La misma garantía después de mantener el botón físico continúa pendiente.
 
 ### 1. Comprobar el nuevo menú de KUAL
 

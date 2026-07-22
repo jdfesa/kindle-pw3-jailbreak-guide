@@ -51,6 +51,12 @@ validado, al mismo tiempo que se restauró `ENABLE_KOREADER_AUTOSTART`. El volum
 se sincronizó y expulsó antes del reinicio; la validación posterior debe hacerse
 con Airplane Mode para demostrar que el acceso no depende de Wi-Fi.
 
+El primer intento posterior a un reinicio físico forzado enumeró RNDIS, pero
+Dropbear no escuchaba en el puerto 22. No se considera una prueba aprobada. Para
+la siguiente validación se usa `Restart` desde el menú con el cable desconectado,
+se espera el arranque completo y recién entonces se conecta USB. El botón
+mantenido queda reservado para un equipo que no responde.
+
 No aplicar `KPP_Patch` hasta completar los nueve puntos. El marcador `auto`
 hace que USBNetwork esté disponible antes del framework, que es lo necesario
 para recuperar un KPP incompatible.

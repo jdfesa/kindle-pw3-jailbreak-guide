@@ -61,9 +61,9 @@ Así queda contenida, reversible y no afecta KUAL ni las pantallas de recuperaci
 
 ## Secuencia esperada después de reiniciar
 
-Un reinicio normal o forzado siempre comienza con el logo de Kindle y su barra
-de progreso. Esa pantalla pertenece al arranque temprano del firmware y no se
-reemplaza, porque hacerlo ampliaría innecesariamente el riesgo de recuperación.
+Todo arranque comienza con el logo de Kindle y su barra de progreso. Esa pantalla
+pertenece al arranque temprano del firmware y no se reemplaza, porque hacerlo
+ampliaría innecesariamente el riesgo de recuperación.
 
 Cuando el framework y `/mnt/us` quedan disponibles, la secuencia buscada es:
 
@@ -79,8 +79,15 @@ desconectado; si después de ese plazo sigue en Home nativa, se revisan el marca
 antes de forzar otro reinicio.
 
 Durante la instalación de USBNetwork el marcador se apartó deliberadamente para
-que MRPI pudiera trabajar sin competir con KOReader. Ya fue restaurado, pero el
-primer reinicio completo posterior queda como prueba pendiente.
+que MRPI pudiera trabajar sin competir con KOReader y después se restauró. El
+22 de julio se probó un `Restart` normal desde el menú, con el cable desconectado:
+el propietario confirmó que aparecieron la ilustración y KOReader automáticamente.
+
+Un reinicio físico forzado anterior había terminado en la Home nativa sin abrir
+KOReader. Por eso el botón mantenido se reserva para bloqueos reales; siempre que
+la interfaz responda se usa `Settings → Device Options → Restart`. La recuperación
+automática después de un corte forzado sigue siendo una prueba separada y no se
+da por aprobada a partir del reinicio normal.
 
 ## Por qué no se modificó KPP
 

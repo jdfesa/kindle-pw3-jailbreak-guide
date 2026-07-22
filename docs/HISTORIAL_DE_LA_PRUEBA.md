@@ -103,8 +103,19 @@ Esta página distingue lo comprobado de lo inferido. Para ejecutar el procedimie
   seguían presentes. Esto valida la reversión física antes de activar `auto`.
 - Desde ese USB Mass Storage validado se creó `usbnet/auto`, se restauró
   `ENABLE_KOREADER_AUTOSTART` y se expulsó el volumen mediante macOS antes de
-  retirar el cable. Queda pendiente comprobar ambos servicios tras el siguiente
-  reinicio con Airplane Mode activo.
+  retirar el cable.
+- El primer arranque posterior se hizo manteniendo el botón físico. Terminó en
+  la Home nativa sin mostrar la ilustración local ni abrir KOReader. USB Ethernet
+  apareció como `en4`, pero el puerto 22 rechazó la conexión; por lo tanto, ese
+  intento no valida ni el autoinicio de KOReader ni `usbnet/auto`.
+- Como el equipo respondía, se desconectó el cable y se usó el `Restart` normal
+  del menú. Después del margen esperado, el propietario confirmó la ilustración
+  local y el ingreso automático a KOReader. El autoinicio queda validado para un
+  reinicio normal; la recuperación después de un reinicio físico forzado y el
+  SSH automático de USBNetwork continúan pendientes.
+- Criterio operativo: usar `Restart` siempre que la interfaz responda y reservar
+  el botón mantenido para un bloqueo real. No encadenar reinicios forzados para
+  probar servicios.
 
 ## 21 de julio de 2026 — uso local y fondo de KOReader
 
