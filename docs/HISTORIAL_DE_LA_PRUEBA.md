@@ -2,6 +2,169 @@
 
 Esta página distingue lo comprobado de lo inferido. Para ejecutar el procedimiento usar [GUIA_COMPLETA.md](GUIA_COMPLETA.md).
 
+## 22 de julio de 2026 — biblioteca inglesa y Night Mode
+
+- La migración inicial movió 72 elementos hacia una biblioteca estructurada.
+  Conservó 113 libros, pero no escribió `SUCCESS` porque su primer validador
+  incluía todos los archivos de `documents`.
+- Se compararon por separado los manifiestos: los 113 hashes de libros eran
+  idénticos, no faltaba ningún hash y sólo habían aparecido dos reportes de
+  fallo `KPPMainAppV2` de la interfaz nativa.
+- Los dos reportes se conservaron en
+  `library-migrations/2026-07-21-v1/incidental-kpp-crash/` y se cerró la
+  auditoría v1 con evidencia explícita.
+- A pedido del propietario se adoptaron nombres estructurales en inglés. La
+  simulación enumeró 13 renombrados y la ejecución real terminó con
+  `LIBRARY_ENGLISH_NAMES_OK`.
+- El resultado contiene 111 libros bajo `/mnt/us/documents/Library` y dos
+  diccionarios deliberadamente separados. El total sigue siendo 113 y el
+  conjunto SHA-256 anterior y posterior es idéntico.
+- `2-library-home.lua` se actualizó para abrir `Library`; el mantenimiento usa
+  `90_Inbox` como único punto de ingreso.
+- Se instaló `1-local-first-defaults.lua`: Night Mode se fija antes de
+  inicializar la pantalla y el plugin SSH de KOReader queda desactivado.
+- `koreader-ssh.conf` se actualizó para usar el PID independiente
+  `/var/run/koreader-ssh-boot.pid`. Se guardó la versión anterior, se comprobó
+  identidad SHA-256 del archivo instalado y `/dev/root` volvió a sólo lectura.
+- Se ordenó un reinicio final. En este PW3 el intervalo normal observado entre
+  `reboot` y KOReader utilizable es de uno a dos minutos; antes de ese plazo un
+  timeout de red no se considera fallo. El propietario confirmó que el equipo
+  seguía avanzando y KOReader terminó de abrir automáticamente.
+- El SSH reapareció sin intervención: `koreader-ssh` quedó `start/running`, su
+  PID coincidió con `/var/run/koreader-ssh-boot.pid` y no existió
+  `/tmp/dropbear_koreader.pid`. Esto confirma la independencia del plugin.
+- La primera versión de `1-local-first-defaults.lua` intentó usar
+  `G_reader_settings` antes de que KOReader la creara; el log registró el fallo
+  y Night Mode no se aplicó en ese arranque. Se corrigió usando directamente
+  `luasettings` y `DataStorage`, con `flush()` antes de inicializar la pantalla.
+- Se reinició únicamente KOReader. El SSH mantuvo el mismo PID, ambos parches se
+  aplicaron sin advertencias y el archivo persistido confirmó
+  `night_mode=true`, HOME/última ruta en `Library`, plugin SSH desactivado y
+  autenticación sólo por clave.
+- El propietario confirmó visualmente que la pantalla Home de KOReader abrió en
+  modo oscuro y que el resultado era el buscado. Night Mode queda, por lo tanto,
+  probado tanto en configuración como en la interfaz real del PW3.
+- Se descargó el snapshot oficial `kindle-usbnet-0.22.N-r19297`. Una primera
+  transferencia truncada y su reanudación fallaron `xz -t`, por lo que se
+  rechazaron. La descarga limpia midió exactamente 46.154.104 bytes, pasó
+  `xz -t` y produjo SHA-256
+  `cf971557d42cc0a6d7699f1c743108c681fa41e3d67ee5802a91932d130d4032`.
+- KindleTool en el PW3 confirmó que
+  `Update_usbnet_0.22.N_install_pw2_and_up.bin` era un sobre firmado destinado,
+  entre otros, a `Kindle PaperWhite 3 (2015) WiFi`. El `.bin` coincidió en ambos
+  extremos con SHA-256
+  `3997468395e48b1ff3d3a4f728818f207553814efdf02a272da95f2a6456acbf`.
+- El primer intento de lanzar MRPI directamente desde la misma sesión SSH no
+  fue válido para esta configuración: al reiniciar la interfaz, el autoinicio
+  de KOReader mostró la ilustración y quedó detenido allí. Después de superar
+  ampliamente el margen normal se realizó un reinicio forzado controlado.
+- El reinicio recuperó KOReader, el SSH independiente y la raíz en sólo lectura.
+  La auditoría confirmó que USBNetwork no se había instalado parcialmente:
+  `/mnt/us/usbnet` y sus trabajos Upstart no existían, y el `.bin` seguía intacto
+  con el mismo hash.
+- Se decidió que MRPI debe ejecutarse desde KUAL con el autoinicio apartado
+  temporalmente. El marcador se movió, sin borrarlo, a
+  `ENABLE_KOREADER_AUTOSTART.disabled-for-mrpi`; KOReader se detuvo y el SSH
+  independiente permaneció activo.
+- Al detener KOReader desde Upstart quedó visible su último framebuffer aunque
+  el proceso ya no existía. La orden nativa de Home no refrescó la pantalla y se
+  realizó un reinicio controlado; con el marcador apartado el equipo volvió a
+  la interfaz nativa.
+- El propietario ejecutó `KUAL → Helper → Install MR Packages`. MRPI mostró
+  `Running install.sh`, terminó en `Success` y reinició el dispositivo.
+- La auditoría posterior confirmó USBNetwork `0.22.N @ r19297`, `.bin`
+  consumido, `usbnet.conf` y `usbnet-preinit.conf` instalados, log terminado en
+  `Done!`, opciones manuales/USB-only y `/dev/root` en sólo lectura.
+- `configure-usbnetwork.sh` copió una clave pública, dejó
+  `KINDLE_IP=192.168.15.244`, bloqueó el SSH de USBNetwork sobre Wi-Fi y mantuvo
+  ausente el marcador `auto` para la primera prueba.
+- macOS detectó `RNDIS/Ethernet Gadget` como `en4`; se asignó únicamente a esa
+  interfaz `192.168.15.201/24`. La ruta a `192.168.15.244` quedó por `en4`, tres
+  pings no tuvieron pérdidas y SSH por clave en el puerto 22 devolvió
+  `uid=0(root)`.
+- Huella ED25519 del servidor USBNetwork:
+  `SHA256:L1PEfxfu1pOG8ZC+o/YrSzK3/1v1ZpAAlxIuLD2s0TA`. Se guardó usando
+  `HostKeyAlias=kindle-pw3-usbnet`, separada de la huella de KOReader.
+- Con Airplane Mode activo, el PW3 conservó únicamente la ruta `usb0`; se
+  repitieron ping, autenticación por clave y transferencia. El archivo remoto
+  coincidió con SHA-256
+  `4d36a039b8bc4963460a585c7e2f5cecec5acb6c0bde92421c5050ac5a71f84d`.
+- El primer intento de volver a USB Mass Storage se hizo con el cable conectado
+  y no cambió el modo. La inspección del helper confirmó que en PW3 KUAL lo
+  bloquea con `must not be plugged in to safely do that`; el procedimiento se
+  corrigió para desconectar, alternar y volver a conectar.
+- Después del cambio apareció un estado intermedio
+  `USBNetwork: enabled (usbnet, sshd down?)`: RNDIS seguía enumerado pero el
+  puerto 22 estaba cerrado. Se dejó el modo en `disabled` con el cable fuera y
+  se reinició normalmente, todavía sin `auto`.
+- Tras esperar la Home nativa y reconectar, macOS montó el dispositivo como
+  USB Mass Storage en `/Volumes/Kindle`; la interfaz RNDIS ya no existía. La
+  biblioteca, la configuración de USBNetwork y el marcador apartado de KOReader
+  seguían presentes. Esto valida la reversión física antes de activar `auto`.
+- Desde ese USB Mass Storage validado se creó `usbnet/auto`, se restauró
+  `ENABLE_KOREADER_AUTOSTART` y se expulsó el volumen mediante macOS antes de
+  retirar el cable. Queda pendiente comprobar ambos servicios tras el siguiente
+  reinicio con Airplane Mode activo.
+
+## 21 de julio de 2026 — uso local y fondo de KOReader
+
+- El Kindle no registrado mostraba la solicitud de registro en `Home` y el
+  aviso `Cloud Not Available` al entrar en `Library`.
+- Se confirmó que el almacenamiento local seguía intacto y que KOReader 2026.03
+  identificaba el equipo como `KindlePaperWhite3`.
+- Se descartó aplicar `KPP_Patch`: su documentación exige SSH de recuperación
+  durante el arranque porque un bytecode incompatible puede dejar KPP en blanco.
+- Se generó una ilustración monocroma original y se optimizó a `1072 × 1448`,
+  escala de grises de 16 niveles.
+- `11-personalizar-koreader.sh` copió la imagen, instaló un user patch reversible
+  y configuró KOReader para mostrarla al suspenderse.
+- Se conservó
+  `settings.reader.lua.pre-custom-screensaver.bak` para restauración.
+- El script validó las copias y terminó con `KOREADER_PERSONALIZADO_OK` y
+  `EXPULSION_OK`. La comprobación visual en el dispositivo queda pendiente.
+- Se creó la clave ECDSA P-256 dedicada `id_ecdsa_kindle_pw3`, con huella
+  `SHA256:NkyP/krpXihdUjU30hQr0xUa8busmxcb/vT5AzwbkTA`.
+- La privada se respaldó cifrada con AES-256-CBC/PBKDF2 bajo
+  `Dropbox/99_Archive/kindle-pw3-jailbreak-guide/ssh/`. La primera contraseña
+  quedó en el Llavero de macOS, pero luego se registró que el Hackintosh y su
+  Llavero no son una fuente de recuperación confiable. Ese respaldo quedó
+  marcado como provisional.
+- Se generó un segundo archivo cifrado cuya contraseña se conservó en un gestor
+  externo. Como esa contraseña se comunicó también por el chat, el archivo debe
+  regenerarse con una nueva que no se revele fuera del gestor.
+- Se localizó el SSH de KOReader en la red local, se ingresó temporalmente como
+  `root` y se instaló la clave pública en
+  `/mnt/us/koreader/settings/SSH/authorized_keys`.
+- La autenticación forzada por clave, sin contraseña, devolvió
+  `KINDLE_SSH_KEY_AUTH_OK` y `uid=0(root)`. Se repitió después de activar
+  `Login with key only`; el acceso por contraseña fue rechazado y una prueba
+  SFTP conservó su SHA-256.
+- Se instaló el alias local `ssh kindle-pw3`.
+- Se instaló `/etc/upstart/koreader.conf`, basado en una configuración probada
+  en PW3/5.16.2.1.1. El marcador visible
+  `/mnt/us/ENABLE_KOREADER_AUTOSTART` habilita el arranque automático, muestra
+  brevemente la ilustración y abre KOReader. La raíz se devolvió a solo lectura.
+- Se ordenó un reinicio de prueba. El Kindle no volvió automáticamente al Wi-Fi;
+  la pantalla indicó que estaba conectado por USB y no se inició KOReader. La
+  causa fue que `/mnt/us`, donde viven el marcador, KOReader y la imagen, estaba
+  exportado a la computadora durante el arranque.
+- Se corrigió `koreader.conf` para esperar hasta cinco minutos a que `/mnt/us`
+  vuelva al dispositivo en lugar de terminar silenciosamente.
+- Se instaló `/etc/upstart/koreader-ssh.conf`: inicia el Dropbear de KOReader en
+  el puerto `2222`, en modo `key only`, durante el arranque y sin depender de
+  que la interfaz de KOReader haya abierto. También espera hasta cinco minutos
+  si `/mnt/us` está exportado por USB.
+- La versión anterior de `koreader.conf` quedó en
+  `/mnt/us/koreader/system-backups/2026-07-21-before-boot-services/`; ambos
+  trabajos instalados coinciden con sus fuentes y la raíz volvió a solo lectura.
+- Se repitió el reinicio con el cable físicamente desconectado. La ilustración
+  apareció correctamente; `koreader` y `koreader-ssh` quedaron en estado
+  `start/running`, el puerto `2222` apareció automáticamente y el alias entró por
+  clave. El arranque completo tardó algo más de un minuto.
+- Se inventarió la biblioteca sin mover archivos: 113 libros, 80 carpetas de
+  primer nivel y 135 directorios `.sdr`. La diferencia indica metadatos o
+  restos de libros anteriores que deben auditarse antes de reorganizar.
+
 ## Estado inicial y backup
 
 - Se detectó un PW3/7.ª generación con prefijo `G090G1` y firmware 5.16.2.1.1.

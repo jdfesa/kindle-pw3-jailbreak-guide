@@ -1,6 +1,6 @@
 # Backlog operativo y de desarrollo
 
-Última actualización: **21 de julio de 2026**.
+Última actualización: **22 de julio de 2026**.
 
 Este archivo conserva lo que falta hacer para que la próxima sesión empiece sin repetir diagnósticos. No forma parte de la guía de jailbreak y ninguna tarea pendiente invalida la liberación ya confirmada.
 
@@ -26,6 +26,12 @@ Al cerrar una tarea se debe anotar fecha, resultado, forma de prueba y cualquier
 - [x] Menú copiado a `/mnt/us/extensions/installed_apps/menu.json`.
 - [x] Fuente y copia con SHA-256 `657617a5460b735dedeb602eccf4ec74275bef3a388f6eb6282d5851a6bbe111`.
 - [x] Escrituras sincronizadas y volumen expulsado correctamente desde macOS.
+- [x] Biblioteca organizada y migrada a categorías estructurales en inglés.
+- [x] 113 hashes de libros idénticos antes y después; 111 libros en `Library`
+  y dos diccionarios separados.
+- [x] `Library` fijada como HOME bloqueada de KOReader con mosaico de portadas.
+- [x] Night Mode fijado mediante un user patch temprano.
+- [x] Servicio SSH separado del plugin de KOReader mediante PID propio.
 
 ## P0 — Próxima sesión: validación sin USB
 
@@ -84,11 +90,30 @@ No mover carpetas por USB y no editar automáticamente la base de datos de Colle
 
 ### Transferencia de libros por red
 
-- [ ] Activar temporalmente el servidor SSH de KOReader en una red local confiable.
-- [ ] Configurar autenticación por clave.
-- [ ] Mantener desactivado `Login without password (DANGEROUS)`.
-- [ ] Transferir un libro de prueba por SFTP al puerto `2222`.
-- [ ] Detener el servidor y confirmar que no queda activo después de usarlo.
+- [x] Instalar la clave ECDSA dedicada en KOReader.
+- [x] Activar temporalmente el servidor SSH de KOReader en una red local confiable.
+- [x] Configurar autenticación por clave y registrar la huella del host.
+- [x] Mantener desactivado `Login without password (DANGEROUS)`.
+- [x] Transferir un archivo de prueba por SFTP al puerto `2222` y comparar su SHA-256.
+- [x] Confirmar después del reinicio que el servicio usa
+  `/var/run/koreader-ssh-boot.pid` y no crea
+  `/tmp/dropbear_koreader.pid`.
+- [x] Investigar USBNetwork sólo después de cerrar la prueba anterior.
+- [x] Instalar USBNetwork `0.22.N-r19297` mediante MRPI y verificar raíz `ro`.
+- [x] Probar ruta, ping y autenticación por clave sobre USB Ethernet manual.
+- [x] Repetir la conexión y una transferencia con Wi-Fi apagado.
+- [x] Volver a USB Mass Storage y comprobar el almacenamiento.
+- [ ] Verificar el `usbnet/auto` ya activado durante el próximo arranque antes
+  de tocar KPP.
+
+### Pulido de la biblioteca
+
+- [x] Usar nombres estructurales en inglés y conservar nombres propios/títulos
+  en su idioma original.
+- [x] Reservar `90_Inbox` como entrada de libros nuevos.
+- [ ] Verificar visualmente progreso e historial de varios libros leídos.
+- [ ] Normalizar autores duplicados y nombres con codificación dañada sin borrar
+  `.sdr` ni fusionar carpetas hasta comprobar los metadatos.
 
 ### Inventario funcional
 

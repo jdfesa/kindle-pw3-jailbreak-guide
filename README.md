@@ -1,6 +1,6 @@
 # Kindle Paperwhite 3: WinterBreak2 verificado en macOS
 
-Procedimiento reproducible para liberar un **Kindle Paperwhite 3 (7.ª generación, 2015)** con firmware **5.16.2.1.1** desde macOS, conservar los libros e instalar KUAL, bloqueo OTA, KOReader y KindleForge.
+Procedimiento reproducible para liberar un **Kindle Paperwhite 3 (7.ª generación, 2015)** con firmware **5.16.2.1.1** desde macOS, conservar los libros e instalar KUAL, bloqueo OTA, KOReader y KindleForge. Incluye además una configuración local-first comprobada, biblioteca ordenada y canales de recuperación por SSH.
 
 Esta documentación proviene de una ejecución real sobre un PW3 con prefijo de serie `G090G1`. La ruta que funcionó fue:
 
@@ -20,11 +20,19 @@ El intento previo con LanguageBreak no funcionó de forma confiable en este disp
 
 Toda la documentación está indexada en [docs/README.md](docs/README.md). Las aplicaciones adicionales compatibles están explicadas en [docs/APLICACIONES_COMPATIBLES.md](docs/APLICACIONES_COMPATIBLES.md), y el estado concreto del equipo de prueba se conserva en el [inventario del dispositivo](docs/INVENTARIO_DEL_DISPOSITIVO.md).
 
-## Herramientas y experimentos propios
+## Herramientas posteriores al jailbreak
 
-La guía de liberación termina en `docs/` y no depende de ningún prototipo propio. El trabajo futuro de personalización vive, deliberadamente separado, en:
+La guía de liberación termina en `docs/` y no depende de estas herramientas. La
+configuración aplicada al dispositivo de prueba queda reproducible en:
 
 - [kindle-tools/installed-apps](kindle-tools/installed-apps/README.md): submenú no destructivo de KUAL que agrupa accesos a las aplicaciones ya instaladas;
+- [kindle-tools/koreader-personalization](kindle-tools/koreader-personalization/README.md): Night Mode temprano, Home de biblioteca, fondo y autoinicio;
+- [kindle-tools/library](kindle-tools/library/README.md): organización reversible de libros con manifiestos y hashes;
+- [kindle-tools/ssh](kindle-tools/ssh/README.md): acceso por clave y recuperación local;
+- [kindle-tools/usbnetwork](kindle-tools/usbnetwork/README.md): contingencia física independiente de Wi-Fi.
+
+El desarrollo futuro permanece deliberadamente separado:
+
 - [experiments/README.md](experiments/README.md): índice de investigación para desarrollar una aplicación propia;
 - [viabilidad técnica](experiments/FEASIBILITY.md), [arquitectura propuesta](experiments/ARCHITECTURE.md) y [hoja de ruta](experiments/ROADMAP.md).
 

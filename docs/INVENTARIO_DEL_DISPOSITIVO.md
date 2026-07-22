@@ -1,6 +1,24 @@
 # Inventario del dispositivo de prueba
 
-Estado registrado el **21 de julio de 2026**.
+Estado registrado el **22 de julio de 2026**.
+
+## Personalización local
+
+| Componente | Estado | Ubicación | Alcance |
+|---|---|---|---|
+| Fondo `library-mountain-pw3.png` | Instalado y confirmado visualmente durante el autoinicio | `/mnt/us/koreader/screensavers/` | Pantalla de reposo e inicio de KOReader |
+| User patch de screensaver | Instalado; falta probar una suspensión aislada | `/mnt/us/koreader/patches/` | Habilita el fondo en equipos con Special Offers |
+| Night Mode temprano | Instalado y confirmado visualmente | `/mnt/us/koreader/patches/` | Home oscura desde el inicio de KOReader |
+| Home de biblioteca | Instalada y confirmada visualmente | `/mnt/us/koreader/patches/` | Abre en `/mnt/us/documents/Library` |
+
+La interfaz nativa de Amazon no fue parcheada. El aviso de registro requiere
+registro o un parche KPP de mayor riesgo. KPP queda aplazado hasta terminar la
+prueba de USBNetwork automático durante un arranque completo.
+
+El script `11-personalizar-koreader.sh` terminó con
+`KOREADER_PERSONALIZADO_OK`, comprobó la imagen, el user patch y las claves de
+configuración, y expulsó el volumen correctamente. La ilustración y la Home
+oscura ya se confirmaron; sólo falta aislar la prueba de suspensión.
 
 Este archivo describe el Kindle concreto utilizado para validar la guía. No es una lista de componentes obligatorios ni una recomendación de instalar todo el catálogo.
 
@@ -22,8 +40,10 @@ Este archivo describe el Kindle concreto utilizado para validar la guía. No es 
 | KUAL de NiLuJe | Instalado y probado | Abre correctamente desde Library |
 | Rename OTA Binaries | Ejecutado | Se eligió `Rename` y el Kindle reinició |
 | UpdateBlock Status | Instalado mediante KindleForge | El archivo existe como `documents/updateblock.sh`; en Library aparece como **Check OTAs**. Falta registrar el resultado que muestre al abrirlo |
-| KOReader 2026.03 `kindlepw2` | Instalado y probado | Abre mediante `KUAL → KOReader → Start KOReader` |
+| KOReader 2026.03 `kindlepw2` | Instalado y probado | Autoinicio local habilitado; KUAL permanece como entrada manual |
 | KindleForge 4.1.0 | Instalado y probado | Catálogo gráfico operativo en este PW3 `sf` |
+| SSH de KOReader por Wi-Fi | Instalado y probado | Puerto `2222`, clave dedicada, PID independiente |
+| USBNetwork 0.22.N-r19297 | Instalado y probado manualmente | Puerto `22`; Airplane Mode y reversión USBMS comprobados; `auto` pendiente de prueba |
 
 `UpdateBlock Status` es el nombre del paquete en KindleForge, pero su lanzador declara `# Name: Check OTAs`. Por eso debe buscarse **Check OTAs** en Library. Es un verificador y no sustituye a `Rename OTA Binaries`. Hasta registrar su resultado, la evidencia disponible de protección OTA es la ejecución confirmada de `Rename` y el reinicio posterior.
 
@@ -74,6 +94,19 @@ La palabra **instalada** indica que el propietario confirmó la instalación des
 Después de probar una aplicación conviene actualizar este inventario con el resultado. Si una aplicación produce errores, desinstalar primero la última incorporada y verificar que KUAL y KOReader continúen abriendo.
 
 ## Transferencia de libros por red
+
+Se creó una clave dedicada ECDSA P-256 para KOReader:
+
+```text
+~/.ssh/id_ecdsa_kindle_pw3
+SHA256:NkyP/krpXihdUjU30hQr0xUa8busmxcb/vT5AzwbkTA
+```
+
+La clave pública está instalada en
+`/mnt/us/koreader/settings/SSH/authorized_keys`. Se comprobó autenticación sólo
+por clave, usuario `root`, transferencia con SHA-256 y persistencia tras reiniciar
+KOReader. La privada quedó respaldada de forma cifrada en
+`Dropbox/99_Archive/kindle-pw3-jailbreak-guide/ssh/`; no está en Git.
 
 No hace falta instalar otro servidor sólo por tener kTerm. KOReader ya incluye SSH/SFTP:
 
