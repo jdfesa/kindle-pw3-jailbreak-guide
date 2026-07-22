@@ -1,10 +1,19 @@
-
-
-https://github.com/user-attachments/assets/12db1f2a-43d5-4dd6-879b-9b24a9aed1a8
-
 # Kindle Paperwhite 3: WinterBreak2 verificado en macOS
 
 Procedimiento reproducible para liberar un **Kindle Paperwhite 3 (7.ª generación, 2015)** con firmware **5.16.2.1.1** desde macOS, conservar los libros e instalar KUAL, bloqueo OTA, KOReader y KindleForge. Incluye además una configuración local-first comprobada, biblioteca ordenada y canales de recuperación por SSH.
+
+## Demostración del arranque
+
+<p align="center">
+  <a href="assets/videos/kindle-pw3-arranque-koreader.mp4">
+    <img src="assets/videos/kindle-pw3-arranque-koreader-poster.jpg" width="320" alt="KOReader abierto automáticamente al terminar el arranque del Kindle Paperwhite 3">
+  </a>
+</p>
+
+<p align="center">
+  <strong><a href="assets/videos/kindle-pw3-arranque-koreader.mp4">▶ Ver el arranque completo (45 s)</a></strong><br>
+  <sub>Reinicio normal del PW3, ilustración local y apertura automática de KOReader. Video H.264 sin audio.</sub>
+</p>
 
 Esta documentación proviene de una ejecución real sobre un PW3 con prefijo de serie `G090G1`. La ruta que funcionó fue:
 
